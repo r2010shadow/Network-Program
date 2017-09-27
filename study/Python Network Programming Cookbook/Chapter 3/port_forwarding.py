@@ -7,7 +7,7 @@ import asyncore
 import socket
 
 LOCAL_SERVER_HOST = 'localhost'
-REMOTE_SERVER_HOST = 'www.baidu.com'
+REMOTE_SERVER_HOST = 'www.google.com'
 BUFSIZE = 4096
 
 class PortForwarder(asyncore.dispatcher):
@@ -52,7 +52,7 @@ class Receiver(asyncore.dispatcher):
         sent = self.send(self.from_remote_buffer)
         self.from_remote_buffer = self.from_remote_buffer[sent:]
         print 'Receiver sent: ', sent
-        
+
     def handle_close(self):
         self.close()
         if self.sender:
@@ -94,7 +94,7 @@ class Sender(asyncore.dispatcher):
     def handle_close(self):
         self.close()
         self.receiver.close()
-    
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Stackless Socket Server Example')
     parser.add_argument('--local-host', action='store', dest='local_host', default=LOCAL_SERVER_HOST)

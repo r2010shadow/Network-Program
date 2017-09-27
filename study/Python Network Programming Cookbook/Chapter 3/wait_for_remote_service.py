@@ -8,8 +8,8 @@ import errno
 from time import time as now
 
 DEFAULT_TIMEOUT = 120
-DEFAULT_SERVER_HOST = '192.168.1.111'
-DEFAULT_SERVER_PORT = 88
+DEFAULT_SERVER_HOST = '10.10.9.143'
+DEFAULT_SERVER_PORT = 22
 
 class NetServiceChecker(object):
     """Wait for a network service to come online"""
@@ -46,7 +46,7 @@ class NetServiceChecker(object):
             else:    # if all goes well
                 self.end_wait()
                 return True
-    
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Wait For Network Service')
     parser.add_argument('--host', action='store', dest='host', default=DEFAULT_SERVER_HOST)
